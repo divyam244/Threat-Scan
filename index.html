@@ -375,5 +375,14 @@
   <noscript>
     <div class="noscript">ThreatScan needs JavaScript to run its checks. Nothing is sent anywhere, but the scanner cannot work without it.</div>
   </noscript>
+  <script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js")
+        .then(() => console.log("Threat Scan service worker registered"))
+        .catch((error) => console.error("Service worker registration failed:", error));
+    });
+  }
+</script>
 </body>
 </html>
